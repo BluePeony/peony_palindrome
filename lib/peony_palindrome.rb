@@ -5,7 +5,7 @@ require "peony_palindrome/version"
   # Your code goes here...
 #end
 
-class String
+module PeonyPalindrome
 
   # Returns true for a palindrome, false otherwise.
   def palindrome?
@@ -16,6 +16,18 @@ class String
 
     # Returns content for palindrome testing.
     def processed_content
-      self.scan(/[a-z]/i).join.downcase
+      if self.is_a? String
+       	self.scan(/[a-z]/i).join.downcase
+      elsif self.is_a? Integer
+    	self.to_s
+      end
     end
+end
+
+class String
+	include PeonyPalindrome
+end
+
+class Integer
+	include PeonyPalindrome
 end
